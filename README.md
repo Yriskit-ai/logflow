@@ -39,7 +39,7 @@ logflow/
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/logflow
+git clone https://github.com/Yriskit-ai/logflow
 cd logflow
 go mod tidy
 go build -o bin/logflow cmd/logflow/main.go

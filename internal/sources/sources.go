@@ -2,7 +2,7 @@
 package sources
 
 import (
-	"github.com/yourusername/logflow/internal/ipc"
+	"github.com/Yriskit-ai/logflow/internal/ipc"
 )
 
 // Source represents a log source that can stream log entries

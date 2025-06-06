@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/charmbracelet/lipgloss"
-	"github.com/yourusername/logflow/internal/log"
+	"github.com/Yriskit-ai/logflow/internal/log"
 )
 
 // Pane represents a single log display pane

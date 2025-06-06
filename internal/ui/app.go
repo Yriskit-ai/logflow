@@ -1,4 +1,3 @@
-// internal/ui/app.go
 package ui
 
 import (
@@ -6,10 +5,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/Yriskit-ai/logflow/internal/ipc"
+	"github.com/Yriskit-ai/logflow/internal/log"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/yourusername/logflow/internal/ipc"
-	"github.com/yourusername/logflow/internal/log"
 )
 
 // LayoutMode defines how panes are arranged
@@ -89,7 +88,8 @@ func (a *App) Run() error {
 	// Start listening for log entries
 	go a.listenForLogs(p)
 
-	return p.Run()
+	_, err := p.Run()
+	return err
 }
 
 // Quit sends a quit message to the application
@@ -164,7 +164,7 @@ func (a *App) handleKeyPress(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 
 	switch msg.String() {
 	// Layout controls
-	case "l":
+	case "L": // Use capital L for layout to avoid conflict
 		a.cycleLayout()
 
 	// Zoom controls
@@ -186,7 +186,7 @@ func (a *App) handleKeyPress(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 		if a.layout == LayoutVertical {
 			a.prevPane()
 		}
-	case "l":
+	case "l": // Use lowercase l for vim navigation
 		if a.layout == LayoutVertical {
 			a.nextPane()
 		}
@@ -320,7 +320,7 @@ func (a *App) renderHeader() string {
 		layoutStr = fmt.Sprintf("ZOOMED: [%d] %s", a.zoomedPane+1, zoomedSource)
 	}
 
-	controls := "[q]uit [l]ayout [z]oom [/]search [?]help"
+	controls := "[q]uit [L]ayout [z]oom [/]search [?]help"
 
 	headerContent := fmt.Sprintf("%s │ %s │ %s │ %s", title, sourceCount, layoutStr, controls)
 
@@ -449,19 +449,6 @@ func (a *App) clearFocusedPane() {
 func (a *App) updateLayout() {
 	// This would update pane dimensions based on current layout
 	// Implementation depends on the specific layout algorithms
-}
-
-// Placeholder implementations for layout rendering
-func (a *App) renderHorizontalLayout(height int) string {
-	return "Horizontal layout implementation"
-}
-
-func (a *App) renderVerticalLayout(height int) string {
-	return "Vertical layout implementation"
-}
-
-func (a *App) renderGridLayout(height int) string {
-	return "Grid layout implementation"
 }
 
 func (a *App) handleSearchInput(msg tea.KeyMsg) (tea.Model, tea.Cmd) {

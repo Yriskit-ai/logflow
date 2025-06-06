@@ -1,18 +1,16 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"log"
 	"os"
-	"os/exec"
 	"os/signal"
 	"syscall"
 
+	"github.com/Yriskit-ai/logflow/internal/ipc"
+	"github.com/Yriskit-ai/logflow/internal/sources"
+	"github.com/Yriskit-ai/logflow/internal/ui"
 	"github.com/spf13/cobra"
-	"github.com/yourusername/logflow/internal/ipc"
-	"github.com/yourusername/logflow/internal/sources"
-	"github.com/yourusername/logflow/internal/ui"
 )
 
 var (

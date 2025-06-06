@@ -5,8 +5,8 @@ import (
 	"bufio"
 	"io"
 
-	"github.com/yourusername/logflow/internal/ipc"
-	"github.com/yourusername/logflow/internal/log"
+	"github.com/Yriskit-ai/logflow/internal/ipc"
+	"github.com/Yriskit-ai/logflow/internal/log"
 )
 
 // PipeSource reads logs from stdin/pipe

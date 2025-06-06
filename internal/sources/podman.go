@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yourusername/logflow/internal/ipc"
-	"github.com/yourusername/logflow/internal/log"
+	"github.com/Yriskit-ai/logflow/internal/ipc"
+	"github.com/Yriskit-ai/logflow/internal/log"
 )
 
 // PodmanSource reads logs from a Podman container

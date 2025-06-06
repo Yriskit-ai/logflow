@@ -1,12 +1,13 @@
-// internal/ui/keybindings.go
 package ui
 
-import "strings"
+import (
+	"strings"
+)
 
 // KeyMap defines the key bindings for the application
 type KeyMap struct {
-	Quit []string
-	Help []string
+	Quit    []string
+	HelpKey []string // Renamed from Help to avoid conflict
 
 	// Navigation
 	NextPane     []string
@@ -39,15 +40,15 @@ type KeyMap struct {
 // DefaultKeyMap returns the default key bindings
 func DefaultKeyMap() KeyMap {
 	return KeyMap{
-		Quit: []string{"q", "ctrl+c"},
-		Help: []string{"?"},
+		Quit:    []string{"q", "ctrl+c"},
+		HelpKey: []string{"?"},
 
 		NextPane:     []string{"tab"},
 		PrevPane:     []string{"shift+tab"},
 		VimNav:       []string{"h", "j", "k", "l"},
 		DirectAccess: []string{"1", "2", "3", "4", "5", "6", "7", "8", "9"},
 
-		CycleLayout: []string{"l"},
+		CycleLayout: []string{"L"}, // Capital L to avoid conflict with vim nav
 		Zoom:        []string{"z"},
 		ZoomOut:     []string{"Z", "esc"},
 
@@ -66,8 +67,8 @@ func DefaultKeyMap() KeyMap {
 	}
 }
 
-// Help returns a help text for the key bindings
-func (k KeyMap) Help() string {
+// HelpText returns a help text for the key bindings
+func (k KeyMap) HelpText() string {
 	help := []string{
 		"Navigation:",
 		"  1-9: Jump to pane",
@@ -75,7 +76,7 @@ func (k KeyMap) Help() string {
 		"  h/j/k/l: Vim navigation",
 		"",
 		"Layout & View:",
-		"  l: Cycle layouts",
+		"  L: Cycle layouts",
 		"  z: Zoom into pane",
 		"  Z/Esc: Zoom out",
 		"",
